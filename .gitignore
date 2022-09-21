@@ -13,3 +13,8 @@
 /matcher/venv
 /matcher/data
 /matcher/.idea
+
+# etl
+/etl/venv
+/etl/data
+/etl/.idea
