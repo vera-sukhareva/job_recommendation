@@ -1,0 +1,15 @@
+.idea
+
+# core
+/core/data
+/core/.idea
+/core/venv
+
+# gateway
+/gateway/.idea
+/gateway/venv
+
+# matcher
+/matcher/venv
+/matcher/data
+/matcher/.idea
