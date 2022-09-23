@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint
 from flask_restful import Api
 
+from src.consumer.MessageConsumer import messageConsumer
 from src.controller.ResumeController import ResumeController
 from src.controller.UserController import UserController
 
@@ -15,3 +16,5 @@ app.register_blueprint(api_bp, url_prefix='/api')
 # rotes
 api.add_resource(UserController, '/users')
 api.add_resource(ResumeController, '/resume')
+
+messageConsumer.start()

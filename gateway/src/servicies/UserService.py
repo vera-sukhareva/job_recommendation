@@ -1,11 +1,11 @@
 import requests
 import json
-from src.constants import Config
+from src.constants import Urls
 
 
 class UserService():
     def sent_response(self, email):
-        response = requests.get(Config.CORE_URL,
+        response = requests.get(Urls.CORE_USERS_URL,
                                 params={'email': email})
         return json.loads(response.content)
 
