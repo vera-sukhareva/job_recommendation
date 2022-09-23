@@ -7,5 +7,5 @@ from src.servicies.UserService import userService
 class UserController(Resource):
     def get(self):
         email = request.args['email']
-        result: object = userService.sent_response(email)
+        result = userService.sent_response(email)
         return result

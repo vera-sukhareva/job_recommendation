@@ -6,6 +6,7 @@ class UserDao:
 
     def find_by_email(self, email: str) -> User:
         user = User(email)
+        user.id = "2"
         # user.status = UserStatus.PROCESSING
         # sql_find_user -> User
         return user

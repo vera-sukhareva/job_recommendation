@@ -7,5 +7,5 @@ from src.servicies.ResumeService import resumeService
 class ResumeController(Resource):
     def post(self):
         resume_pdf = request.files['resume']
-        response = resumeService.sent_resume(resume_pdf)
+        response = resumeService.send_resume(resume_pdf)
         return response
