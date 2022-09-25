@@ -4,7 +4,9 @@ from typing import List
 
 from kafka import KafkaConsumer
 
-from src.constants import Urls
+from src.core import app
+from src.model.user.UserStatus import UserStatus
+from src.utils.constants import Urls
 from src.servicies.UserService import userService
 from src.utils.Topics import Topics
 
@@ -23,9 +25,10 @@ class MessageConsumer(threading.Thread):
             print("user updated with recommendation")
 
     def _handle(self, user_id: int, recommendations: List[str]):
-        user = userService.get_by_id(user_id)
-        user.recommendations = recommendations
-        userService.update_user(user)
+        with app.app_context():
+            user = userService.get_by_id(user_id)
+            user.recommendations = recommendations
+            userService.update_user(user_id, UserStatus.FINISHED)
 
 
 messageConsumer = MessageConsumer()

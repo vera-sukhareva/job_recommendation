@@ -7,6 +7,7 @@ from src.model.Vacancy import Vacancy
 class Loader:
 
     def load(self, vacancies: pd.DataFrame):
+        vacancyDao.delete()
         for index, row in vacancies.iterrows():
             new_vacancy = Vacancy(title=row.Title,
                                   location=row.Location,
