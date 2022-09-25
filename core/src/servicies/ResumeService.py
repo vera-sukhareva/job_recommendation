@@ -1,7 +1,7 @@
 from pyresparser import ResumeParser
 import os
 
-from src.model.Resume import Resume
+from src.model.resume.Resume import Resume
 from src.dao.ResumeDao import resumeDao
 
 
@@ -15,7 +15,8 @@ class ResumeService:
         return self._map_to_resume(parsed)
 
     def save_resume(self, resume: Resume) -> Resume:
-        return resumeDao.save_resume(resume.email)
+        resumeDao.save_resume(resume)
+        return resume
 
     def _map_to_resume(self, parsed_data: dict) -> Resume:
         return Resume(

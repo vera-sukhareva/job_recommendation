@@ -1,12 +1,12 @@
-from src.model.Resume import Resume
+from src.core import db
+from src.dao.BaseDao import BaseDao
+from src.model.resume.Resume import Resume
 
 
-class ResumeDao:
-    def save_resume(self, resume: Resume) -> Resume:
-        # sql_save_resume
-        new_resume = resume
-        new_resume.id="0"
-        return new_resume
+class ResumeDao(BaseDao):
+    def save_resume(self, resume: Resume):
+        db.session.add(resume)
+        self.commit()
 
 
 resumeDao = ResumeDao()

@@ -17,9 +17,6 @@ class MessageConsumer(threading.Thread):
                                  value_deserializer=lambda m: json.loads(m.decode('utf-8')),
                                  group_id='group_1',
                                  )
-        # consumer.poll()
-        # consumer.seek_to_end()
-        # while True:
         for msg in consumer:
             event_data = msg.value
             print("consumed", event_data)

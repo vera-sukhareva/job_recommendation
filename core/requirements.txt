@@ -21,3 +21,5 @@ pyresparser==1.0.6
 nltk==3.7
 spacy==2.3.5
 kafka-python==2.0.2
+Flask-SQLAlchemy==2.5.1
+psycopg2-binary==2.9.3

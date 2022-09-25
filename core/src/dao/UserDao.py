@@ -1,31 +1,24 @@
-from src.model.User import User
-# from src.model.UserStatus import UserStatus
+from src.core import db
+from src.dao.BaseDao import BaseDao
+from src.model.user.User import User
 
 
-class UserDao:
+class UserDao(BaseDao):
 
     def find_by_email(self, email: str) -> User:
-        user = User(email)
-        user.id = "2"
-        # user.status = UserStatus.PROCESSING
-        # sql_find_user -> User
+        user = User.query.filter_by(email=email).first()
         return user
 
     def find_by_id(self, user_id: int) -> User:
-        user = User("oij")
-        # user.status = UserStatus.PROCESSING
-        # sql_find_user -> User
+        user = User.query.get(user_id)
         return user
 
-    def save_user(self, user: User) -> User:
-        # sql_save_user -> bool
-        new_user = User(user.email)
-        return new_user
+    def save_user(self, user: User):
+        db.session.add(user)
+        self.commit()
 
-    def update_user(self, user: User) -> User:
-        # sql_save_user -> bool
-        updated_user = User(user.email)
-        return updated_user
+    def update_user(self):
+        self.commit()
 
 
 userDao = UserDao()
